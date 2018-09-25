@@ -8,10 +8,11 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 class ConfigurationDataProvider: DataProvider {
     
-    func getConfiguration(completion: @escaping (_ response: Configuration?, _ error: Error?) -> ()) {
-        execute(request: ConfigurationRouter.getConfiguration, completion: completion)
+    func getConfiguration() -> Observable<Configuration> {
+        return execute(request: ConfigurationRouter.getConfiguration)
     }
 }

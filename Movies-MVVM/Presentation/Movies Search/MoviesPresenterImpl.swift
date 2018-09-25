@@ -25,7 +25,7 @@ class MoviesPresenterImpl: MoviesPresenter {
         }
         
         view?.displayProgress()
-        dataProvider.search(by: query, completion: moviesLoaded(_:_:))
+        //dataProvider.search(by: query, completion: moviesLoaded(_:_:))
     }
     
     private func moviesLoaded(_ searchResult: SearchResult?, _ error: Error?) {

@@ -8,10 +8,11 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 class MoviesDataProvider: DataProvider {
     
-    func getDetails(by id: Int, completion: @escaping (_ response: MovieDetails?, _ error: Error?) -> ()) {
-        execute(request: MoviesRouter.getDetails(id: id), completion: completion)
+    func getDetails(by id: Int) -> Observable<MovieDetails> {
+        return execute(request: MoviesRouter.getDetails(id: id))
     }
 }

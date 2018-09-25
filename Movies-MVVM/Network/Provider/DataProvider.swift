@@ -10,6 +10,8 @@ import Foundation
 import ObjectMapper
 import Alamofire
 import AlamofireObjectMapper
+import RxAlamofire
+import RxSwift
 
 class DataProvider {
     
@@ -24,15 +26,31 @@ class DataProvider {
         self.sessionManager = sessionManager
     }
     
-    func execute<T : Mappable>(request: URLRequestConvertible, completion: @escaping (_ response: T?, _ error: Error?) -> ()) {
-        sessionManager.request(request).validate().responseObject { (response: DataResponse<T>) in
-            completion(response.result.value, response.result.error)
-        }
+    func execute<T : Mappable>(request: URLRequestConvertible) -> Observable<T> {
+        return sessionManager
+            .rx
+            .request(urlRequest: request)
+            .observeOn(MainScheduler.instance)
+            .json()
+            .map({ json -> T in
+                guard let response = Mapper<T>().map(JSONObject: json) else {
+                    throw RxError.noElements
+                }
+                return response
+            })
     }
     
-    func execute<T : Mappable>(request: URLRequestConvertible, completion: @escaping (_ response: [T]?, _ error: Error?) -> ()) {
-        sessionManager.request(request).validate().responseArray { (response: DataResponse<[T]>) in
-            completion(response.result.value, response.result.error)
-        }
+    func execute<T : Mappable>(request: URLRequestConvertible) -> Observable<[T]> {
+        return sessionManager
+            .rx
+            .request(urlRequest: request)
+            .observeOn(MainScheduler.instance)
+            .json()
+            .map({ json -> [T] in
+                guard let response = Mapper<T>().mapArray(JSONObject: json) else {
+                    throw RxError.noElements
+                }
+                return response
+            })
     }
 }

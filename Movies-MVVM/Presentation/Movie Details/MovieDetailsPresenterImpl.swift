@@ -30,7 +30,7 @@ class MovieDetailsPresenterImpl: MovieDetailsPresenter {
         if let movie = repository.fetch(by: id) {
             movieDetailsLoaded(movie, nil)
         } else {
-            dataProvider.getDetails(by: id, completion: movieDetailsLoaded(_:_:))
+            //dataProvider.getDetails(by: id, completion: movieDetailsLoaded(_:_:))
         }   
     }
     

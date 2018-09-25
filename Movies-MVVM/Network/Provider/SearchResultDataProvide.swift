@@ -8,11 +8,12 @@
 
 import Foundation
 import Alamofire
+import RxSwift
 
 class SearchResultDataProvider: DataProvider {
     
-    func search(by query: String, completion: @escaping (_ response: SearchResult?, _ error: Error?) -> ()) {
-        execute(request: SearchResultRouter.search(query: query), completion: completion)
+    func search(by query: String) -> Observable<SearchResult> {
+        return execute(request: SearchResultRouter.search(query: query))
     }
     
 }
