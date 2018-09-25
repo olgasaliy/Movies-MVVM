@@ -1,6 +1,6 @@
 //
 //  FavoriteMoviesTableViewController.swift
-//  MoviesNew
+//  Movies-MVVM
 //
 //  Created by Olga Saliy on 9/4/18.
 //  Copyright © 2018 Olha Salii. All rights reserved.

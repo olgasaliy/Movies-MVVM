@@ -1,6 +1,6 @@
 //
 //  FavoriteRepository.swift
-//  MoviesNew
+//  Movies-MVVM
 //
 //  Created by Olga Saliy on 9/3/18.
 //  Copyright © 2018 Olha Salii. All rights reserved.

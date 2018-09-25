@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2EB6FE81188E20981B6CE67 /* Pods_MoviesNew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C64FC4EE7B5840C533ED9BCA /* Pods_MoviesNew.framework */; };
 		C27C8D398B12495D3E1592AB /* Pods_Movies_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30AC5F9A0466F238A851DBFB /* Pods_Movies_MVVM.framework */; };
 		CC11B10F212B024B009896E6 /* SearchResultRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11B10E212B024B009896E6 /* SearchResultRouter.swift */; };
 		CC11B112212B068F009896E6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11B111212B068F009896E6 /* Constants.swift */; };
@@ -67,7 +66,6 @@
 /* Begin PBXFileReference section */
 		017AEB2AE218FB50A263F023 /* Pods-Movies-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies-MVVM.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies-MVVM/Pods-Movies-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		30AC5F9A0466F238A851DBFB /* Pods_Movies_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6921CF8EA3D6B606210DB966 /* Pods-MoviesNew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesNew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoviesNew/Pods-MoviesNew.debug.xcconfig"; sourceTree = "<group>"; };
 		C64FC4EE7B5840C533ED9BCA /* Pods_MoviesNew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesNew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC11B10E212B024B009896E6 /* SearchResultRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultRouter.swift; sourceTree = "<group>"; };
 		CC11B111212B068F009896E6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 		CCD900FE213D7BD000464CD1 /* NSManagedObjectContext+Insert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Insert.swift"; sourceTree = "<group>"; };
 		CCD90100213D86D400464CD1 /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
 		DC5548F568067D92A735B288 /* Pods-Movies-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies-MVVM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movies-MVVM/Pods-Movies-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
-		F7222D00A3EF42D2055FEA88 /* Pods-MoviesNew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesNew.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoviesNew/Pods-MoviesNew.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +130,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2EB6FE81188E20981B6CE67 /* Pods_MoviesNew.framework in Frameworks */,
 				C27C8D398B12495D3E1592AB /* Pods_Movies_MVVM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,8 +149,6 @@
 		BB6F8489F83C80BBD0291B83 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6921CF8EA3D6B606210DB966 /* Pods-MoviesNew.debug.xcconfig */,
-				F7222D00A3EF42D2055FEA88 /* Pods-MoviesNew.release.xcconfig */,
 				DC5548F568067D92A735B288 /* Pods-Movies-MVVM.debug.xcconfig */,
 				017AEB2AE218FB50A263F023 /* Pods-Movies-MVVM.release.xcconfig */,
 			);
@@ -753,7 +747,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DB3E36CSLR;
 				INFOPLIST_FILE = "$(SRCROOT)/Movies-MVVM/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.study.Movies-MVVM";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -769,7 +766,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DB3E36CSLR;
 				INFOPLIST_FILE = "$(SRCROOT)/Movies-MVVM/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.study.Movies-MVVM";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
