@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MovieDetails" representedClassName=".CDMovieDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posterPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="companies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductionCompany" inverseName="movie" inverseEntity="ProductionCompany" syncable="YES"/>
+        <relationship name="languages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SpokenLanguage" inverseName="movie" inverseEntity="SpokenLanguage" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="ProductionCompany" representedClassName=".CDProductionCompany" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="originCountry" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MovieDetails" inverseName="companies" inverseEntity="MovieDetails" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="SpokenLanguage" representedClassName=".CDSpokenLanguage" syncable="YES" codeGenerationType="class">
+        <attribute name="iso" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MovieDetails" inverseName="languages" inverseEntity="MovieDetails" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="MovieDetails" positionX="153" positionY="35" width="128" height="165"/>
+        <element name="ProductionCompany" positionX="-234" positionY="75" width="128" height="105"/>
+        <element name="SpokenLanguage" positionX="-135" positionY="-75" width="128" height="90"/>
+    </elements>
+</model>
