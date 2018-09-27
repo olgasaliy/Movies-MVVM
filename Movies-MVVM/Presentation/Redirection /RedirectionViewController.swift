@@ -7,26 +7,47 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RedirectionViewController: UIViewController {
 
-    private let dataProvider = ConfigurationDataProvider()
+    private let disposeBag = DisposeBag()
+    private var viewModel: RedirectionViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        dataProvider.getConfiguration { [weak self] (configuration, error) in
-//            LocalDataStorage.default.imageUrl = configuration?.images.secure_base_url
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-//                self?.redirectToMainStoryboard()
-//            })
-//        }
+        viewModel = RedirectionViewModel(ConfigurationDataProvider())
+        bind()
     }
     
-    private func redirectToMainStoryboard() {
+    private func redirectToMainStoryboard(_ navigate: Bool) {
+        guard navigate else {
+            return
+        }
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "initialController") as UIViewController
         present(vc, animated: true, completion: nil)
     }
 
+}
+
+extension RedirectionViewController: Bindable {
+    
+    func bind() {
+        let viewWillAppear = rx.sentMessage(#selector(UIViewController.viewWillAppear(_:)))
+            .map{ _ in () }
+            .asDriver(onErrorJustReturn: ())
+        let input = RedirectionViewModel.Input(load: viewWillAppear)
+        let output = viewModel.transform(input: input)
+        
+        output.dataIsReady
+            .do(onNext: redirectToMainStoryboard(_:))
+            .drive()
+            .disposed(by: disposeBag)
+
+    }
+    
 }
